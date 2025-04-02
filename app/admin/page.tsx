@@ -15,9 +15,21 @@ interface SavedIdea {
   savedAt: string;
 }
 
+interface TravelIdea {
+  name: string;
+  distance: string;
+  description: string;
+}
+
+interface SavedTravelIdea {
+  category: string;
+  idea: TravelIdea;
+  savedAt: string;
+}
+
 interface SavedData {
   dates: SavedIdea[];
-  travel: SavedIdea[];
+  travel: SavedTravelIdea[];
   intimate: SavedIdea[];
 }
 
@@ -171,13 +183,9 @@ export default function AdminPanel() {
                   <h3 className="text-lg font-semibold text-purple-600 mb-2">
                     {idea.category}
                   </h3>
-                  <p className="text-gray-800 mb-2">{idea.idea.name || idea.idea}</p>
-                  {idea.idea.description && (
-                    <p className="text-gray-600 mb-2">{idea.idea.description}</p>
-                  )}
-                  {idea.idea.distance && (
-                    <p className="text-gray-600 mb-2">{idea.idea.distance}</p>
-                  )}
+                  <p className="text-gray-800 mb-2">{idea.idea.name}</p>
+                  <p className="text-gray-600 mb-2">{idea.idea.description}</p>
+                  <p className="text-gray-600 mb-2">{idea.idea.distance}</p>
                   <p className="text-sm text-gray-500">
                     Salvo em: {new Date(idea.savedAt).toLocaleDateString('pt-BR')}
                   </p>
